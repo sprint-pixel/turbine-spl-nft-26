@@ -4,6 +4,23 @@ A small TypeScript project for learning how to create and use an SPL token and
 an NFT on Solana Devnet. It uses Solana Kit for SPL-token transactions, Umi and
 Metaplex Core for NFT operations, and Irys for image and JSON uploads.
 
+## Verified Devnet transactions
+
+These public transaction links document the completed assignment steps.
+
+| Step | Transaction |
+|---|---|
+| Initialize the six-decimal SPL mint [`D8PG2SWbB1EPArWV8PCzsFRew4JAFHbTnK12JFUbJmDq`](https://explorer.solana.com/address/D8PG2SWbB1EPArWV8PCzsFRew4JAFHbTnK12JFUbJmDq?cluster=devnet) | [View transaction](https://explorer.solana.com/tx/dLFnWm6upaxnDX97cbSpp8nCtCpu4Vn4NJ4NnVZyxsLtvFWm2fhyPuBbW2nECDxbixxzNsjFzgYajfRoA8mJR3s?cluster=devnet) |
+| Mint five SPL tokens | [View transaction](https://explorer.solana.com/tx/5Nq5LH2eqZnYJhTRweijRS5LTEQnLakxyMLSU5vd3e9REasEv9ED2nSYg3eNaCBiXD4pK4nQSpKLbBddD57g997X?cluster=devnet) |
+| Transfer one SPL token | [View transaction](https://explorer.solana.com/tx/3SfBKaLZ8Vvc8XkitBEgkTQeMUeaNtfCDoPM2ywn6DfSqcjYJdZMKFVWZvGL3LtDm3jvEkE7wpiwCnHZjRuSJq7z?cluster=devnet) |
+| Mint MPL Core NFT [`5xzzfHMMAB7z6UShL7p9rnhNJC61t7MwVUJj1tX5v6eD`](https://explorer.solana.com/address/5xzzfHMMAB7z6UShL7p9rnhNJC61t7MwVUJj1tX5v6eD?cluster=devnet) | [View transaction](https://explorer.solana.com/tx/3siAzAcvLCdapSjfFHyM6Z8WidJivvo2yBGCa8y3BFcp77zdw33pTgWHjyYWL3ZCiZwo6CpBfdP8faLpU31FYF2S?cluster=devnet) |
+| Update NFT name and metadata | [View transaction](https://explorer.solana.com/tx/4xDdungULVy5yMMTPbtQ6LfB7CEYLLhjURVimdH8RAhURdq8Q78R3avPuivB9zVz9xMNoMABKXC6JbruDBMW9fMW?cluster=devnet) |
+| Transfer NFT ownership | [View transaction](https://explorer.solana.com/tx/2R3R2y75siTeQt9DsNi43QCHzLqXehMPWroCpmvjJj6Q6RqHtC1B3B3b2YUFSpCa9LA4SgjcLkPjaYBDgPtZQyCm?cluster=devnet) |
+
+The SPL mint has six decimal places: `1_000_000` base units equals one whole
+token. The SPL mint transaction minted five tokens and the transfer sent one.
+The optional NFT burn challenge was not implemented.
+
 ## Assignment progress
 
 | Requirement | Status | What this project does |
@@ -13,27 +30,6 @@ Metaplex Core for NFT operations, and Irys for image and JSON uploads.
 | Update the NFT's name and metadata as update authority | Complete | Fetches the existing asset and updates its name and URI using the authority wallet. |
 | Transfer NFT ownership between wallets (optional) | Complete | Transferred the existing Core asset to the recipient wallet on Devnet. |
 | Permanently destroy the NFT and reclaim rent (optional) | Not implemented | This project does not include NFT burn functionality. |
-
-## Verified Devnet transactions
-
-These are public Devnet addresses and transaction signatures; they do not
-include wallet secret keys.
-
-### SPL token
-
-- Mint: `D8PG2SWbB1EPArWV8PCzsFRew4JAFHbTnK12JFUbJmDq`
-- Mint transaction: [5Nq5LH2eqZnYJhTRweijRS5LTEQnLakxyMLSU5vd3e9REasEv9ED2nSYg3eNaCBiXD4pK4nQSpKLbBddD57g997X](https://explorer.solana.com/tx/5Nq5LH2eqZnYJhTRweijRS5LTEQnLakxyMLSU5vd3e9REasEv9ED2nSYg3eNaCBiXD4pK4nQSpKLbBddD57g997X?cluster=devnet)
-- Transfer transaction: [3SfBKaLZ8Vvc8XkitBEgkTQeMUeaNtfCDoPM2ywn6DfSqcjYJdZMKFVWZvGL3LtDm3jvEkE7wpiwCnHZjRuSJq7z](https://explorer.solana.com/tx/3SfBKaLZ8Vvc8XkitBEgkTQeMUeaNtfCDoPM2ywn6DfSqcjYJdZMKFVWZvGL3LtDm3jvEkE7wpiwCnHZjRuSJq7z?cluster=devnet)
-
-The mint uses six decimal places: one whole token is represented as
-`1_000_000` base units. The mint transaction created and minted five tokens;
-the transfer transaction sent one token to the recipient.
-
-### MPL Core NFT
-
-- Asset: [5xzzfHMMAB7z6UShL7p9rnhNJC61t7MwVUJj1tX5v6eD](https://explorer.solana.com/address/5xzzfHMMAB7z6UShL7p9rnhNJC61t7MwVUJj1tX5v6eD?cluster=devnet)
-- Mint transaction: [3siAzAcvLCdapSjfFHyM6Z8WidJivvo2yBGCa8y3BFcp77zdw33pTgWHjyYWL3ZCiZwo6CpBfdP8faLpU31FYF2S](https://explorer.solana.com/tx/3siAzAcvLCdapSjfFHyM6Z8WidJivvo2yBGCa8y3BFcp77zdw33pTgWHjyYWL3ZCiZwo6CpBfdP8faLpU31FYF2S?cluster=devnet)
-- Metadata update transaction: [4xDdungULVy5yMMTPbtQ6LfB7CEYLLhjURVimdH8RAhURdq8Q78R3avPuivB9zVz9xMNoMABKXC6JbruDBMW9fMW](https://explorer.solana.com/tx/4xDdungULVy5yMMTPbtQ6LfB7CEYLLhjURVimdH8RAhURdq8Q78R3avPuivB9zVz9xMNoMABKXC6JbruDBMW9fMW?cluster=devnet)
 
 ## Requirements and setup
 
