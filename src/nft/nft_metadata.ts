@@ -25,13 +25,17 @@ umi.use(signerIdentity(signer));
   try {
     //change the image uri to your image uri obtained from nft_image.ts
     const image =
-      "https://gateway.irys.xyz/5EDyiNrMWfhjdsEwXLrwkHPwZoZB2m1A2Kudrfxo1tpr";
+      "https://gateway.irys.xyz/Bj9jnNaFEi2vF2a83tjNHzM56ixys3ja22WKJ5hWPmff";
 
     //json scheme : https://www.metaplex.com/docs/smart-contracts/core/json-schema
     //change the metadata
-    // const metadata =
-    // const myUri =
-    // console.log(`metadata uri: ${myUri} `);
+    const metadata ={
+      name: "My NFT",
+      description: "Don't get too close to the Turbine!",
+      image,
+    };
+    const myUri = await umi.uploader.uploadJson(metadata)
+    console.log(`metadata uri: ${myUri} `);
   } catch (error) {
     console.log("error", error);
   }

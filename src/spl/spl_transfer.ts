@@ -19,6 +19,7 @@ import {
   getTransferCheckedInstruction,
   TOKEN_PROGRAM_ADDRESS,
 } from "@solana-program/token";
+import { TokenMetadataError } from "@metaplex-foundation/mpl-token-metadata";
 
 const rpc = createSolanaRpc("https://api.devnet.solana.com");
 
@@ -27,10 +28,10 @@ const rpcSubscriptions = createSolanaRpcSubscriptions(
 );
 
 //paste your mint address got from spl_init.ts
-const mint = address("E2Jazz2VXcVL9RZkn6ZFA4q1YGvgEvrns3Gr6w72DC4w");
+const mint = address("D8PG2SWbB1EPArWV8PCzsFRew4JAFHbTnK12JFUbJmDq");
 
 //paste the address of the recipient
-const to = address("9EUd4VNcjMAysd7zQk3Q1a4tb28BYndLNBAQDiYnHJ64");
+const to = address("2EyFwHdb2EZZFeyz7FBVFNWR6BmuURg4mTacvfC8HJKA");
 
 (async () => {
   try {
@@ -54,9 +55,25 @@ const to = address("9EUd4VNcjMAysd7zQk3Q1a4tb28BYndLNBAQDiYnHJ64");
     });
     console.log(`Your toAta is : ${toAta}`);
 
-    // const createAtaIx =
+    
 
-    // const transferTx =
+    const createAtaIx = await getCreateAssociatedTokenInstructionAsync({
+      payer:signer,
+      owner: to,
+      mint,
+      ata: toAta,
+      tokenProgram: TOKEN_PROGRAM_ADDRESS
+    })
+
+    const transferTx = getTransferCheckedInstruction({
+      source:fromAta,
+      mint,
+      destination:toAta,
+      authority:signer,
+      amount:1_000_000n,
+      decimals: 6,
+    })
+
 
     const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
 
@@ -69,20 +86,20 @@ const to = address("9EUd4VNcjMAysd7zQk3Q1a4tb28BYndLNBAQDiYnHJ64");
       msgWithPayer,
     );
 
-    // const txMessage = appendTransactionMessageInstructions(
-    //   [createAtaIx, transferTx],
-    //   msgWithLiftime,
-    // );
+    const txMessage = appendTransactionMessageInstructions(
+      [createAtaIx, transferTx],
+      msgWithLiftime,
+    );
 
-    // const signedTx = await signTransactionMessageWithSigners(txMessage);
+    const signedTx = await signTransactionMessageWithSigners(txMessage);
 
-    // assertIsTransactionWithBlockhashLifetime(signedTx);
+    assertIsTransactionWithBlockhashLifetime(signedTx);
 
-    // const signature = getSignatureFromTransaction(signedTx);
+    const signature = getSignatureFromTransaction(signedTx);
 
-    // await sendAndConfirm(signedTx, { commitment: "confirmed" });
+    await sendAndConfirm(signedTx, { commitment: "confirmed" });
 
-    // console.log(`mint txid: ${signature}`);
+    console.log(`mint txid: ${signature}`);
   } catch (error) {
     console.log(error);
   }
